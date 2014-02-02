@@ -1,0 +1,3 @@
+load EnFluxPerp.mat
+xhist=-15-xhist/100*35
+semilogy(xhist,hisperp2(:,5))

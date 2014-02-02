@@ -1,0 +1,3 @@
+
+clean:
+	rm -r *film*/* *.gif *.tar *.txt

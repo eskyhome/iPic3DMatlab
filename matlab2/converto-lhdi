@@ -1,0 +1,6 @@
+ convert lhdi1/*.png lhdi1.gif
+ convert lhdi2/*.png lhdi2.gif
+ convert lhdi3/*.png lhdi3.gif
+ convert lhdi4/*.png lhdi4.gif
+ convert lhdi5/*.png lhdi5.gif
+ tar zcvf lhdi.tar lhdi*

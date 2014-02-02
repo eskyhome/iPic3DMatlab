@@ -1,0 +1,37 @@
+Warning: No display specified.  You will not be able to display graphics on the screen.
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2009 The MathWorks, Inc.
+                Version 7.9.0.529 (R2009b) 64-bit (glnxa64)
+                              August 12, 2009
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+>> >> >> >> >> >> >> >> >> >> {Warning: Name is nonexistent or not a directory: matlab-parsek.} 
+> In path at 110
+  In addpath at 87
+  In sat_traces2D_yz at 1
+
+nojump =
+
+     1
+
+
+results_dir =
+
+./
+
+
+filename =
+
+./settings.hdf
+
+{??? Error using ==> hdf5read at 78
+Couldn't open file (./settings.hdf).
+
+Error in ==> sat_traces2D_yz at 13
+Lx=hdf5read(filename,'/collective/Lx')
+} 
+>> >> >> 

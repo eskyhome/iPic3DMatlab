@@ -1,0 +1,3 @@
+
+clean:
+	rm *.tar rec*.txt

@@ -1,0 +1,3 @@
+rm -f films.tar
+rm -f film*/*
+rm -f film*.gif

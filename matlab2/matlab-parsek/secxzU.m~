@@ -1,0 +1,102 @@
+
+aver=0;
+
+recon=[];
+tslice=[];
+
+indexf=indexg
+%for it=1:round(nt/10):nt
+for it=1:nt
+    
+bbx=squeeze(sum(Bx(1:end,1:end,it-aver:it),3))/(aver+1);
+bby=squeeze(sum(By(1:end,1:end,it-aver:it),3))/(aver+1);
+bbz=squeeze(sum(Bz(1:end,1:end,it-aver:it),3))/(aver+1);
+eex=squeeze(sum(Ex(1:end,1:end,it-aver:it),3))/(aver+1);
+eey=squeeze(sum(Ey(1:end,1:end,it-aver:it),3))/(aver+1);
+eez=squeeze(sum(Ez(1:end,1:end,it-aver:it),3))/(aver+1);
+jsx0=squeeze(sum(Jxs0(1:end,1:end,it-aver:it),3))/(aver+1);
+jsy0=squeeze(sum(Jys0(1:end,1:end,it-aver:it),3))/(aver+1);
+jsz0=squeeze(sum(Jzs0(1:end,1:end,it-aver:it),3))/(aver+1);
+jsxb=squeeze(sum(Jxs2(1:end,1:end,it-aver:it),3))/(aver+1);
+jsyb=squeeze(sum(Jys2(1:end,1:end,it-aver:it),3))/(aver+1);
+jszb=squeeze(sum(Jzs2(1:end,1:end,it-aver:it),3))/(aver+1);
+rrho=squeeze(sum(rhos0(1:end,1:end,it-aver:it),3))/(aver+1);
+rrhob=squeeze(sum(rhos2(1:end,1:end,it-aver:it),3))/(aver+1);
+
+bbb=sqrt(bbx.^2+bby.^2+bbz.^2);
+upar=((jsx0+jsxb).*bbx+(jsy0+jsyb).*bby+(jsz0+jszb).*bbz)./((rrho+rrhob).*bbb);
+uparb=(jsxb.*bbx+jsyb.*bby+jszb.*bbz)./(rrhob.*bbb);
+
+uperpx=(jsx0+jsxb)./(rrho+rrhob)-upar.*bbx./bbb;
+uperpy=(jsy0+jsyb)./(rrho+rrhob)-upar.*bby./bbb;
+uperpz=(jsz0+jszb)./(rrho+rrhob)-upar.*bbz./bbb;
+uperp=sqrt(uperpx.^2+uperpy.^2+uperpz.^2)
+[xx yy]=meshgrid(1:ny,1:nx);
+
+xx=xx/ny*Lx;
+yy=yy/nx*Ly;
+ay=vecpot(xx,yy,bbx,bby);
+
+limits
+
+disp('f1')
+h=figure(1);
+set(h,'Position' , [5 5 560 420]);
+coplot(xx,yy,upar,ay,'x/d_i','y/d_i',['u_{e||}(\omega_{ci}t=' num2str(time(it)) ')'],lmt)
+%F1(indexf)=getframe(gcf);
+set(gcf, 'Renderer', 'zbuffer');
+%set(gcf,'fontsize',18)
+print('-dpng',['Ufilm1/' num2str(indexf,'%8.8i')])
+saveas(gcf,['Ufilm1/' num2str(indexf,'%8.8i') '.fig'])
+close all
+
+disp('f1')
+h=figure(1);
+set(h,'Position' , [5 5 560 420]);
+coplot(xx,yy,uperp,ay,'x/d_i','y/d_i',['u_{e\perp}(\omega_{ci}t=' num2str(time(it)) ')'],lmt)
+%F1(indexf)=getframe(gcf);
+set(gcf, 'Renderer', 'zbuffer');
+%set(gcf,'fontsize',18)
+print('-dpng',['Ufilm2/' num2str(indexf,'%8.8i')])
+saveas(gcf,['Ufilm2/' num2str(indexf,'%8.8i') '.fig'])
+close all
+
+disp('f1')
+h=figure(1);
+set(h,'Position' , [5 5 560 420]);
+coplot(xx,yy,uperpx,ay,'x/d_i','y/d_i',['u_{e\perp,x}(\omega_{ci}t=' num2str(time(it)) ')'],lmt)
+%F1(indexf)=getframe(gcf);
+set(gcf, 'Renderer', 'zbuffer');
+%set(gcf,'fontsize',18)
+print('-dpng',['Ufilm3/' num2str(indexf,'%8.8i')])
+saveas(gcf,['Ufilm3/' num2str(indexf,'%8.8i') '.fig'])
+close all
+
+disp('f1')
+h=figure(1);
+set(h,'Position' , [5 5 560 420]);
+coplot(xx,yy,uperpy,ay,'x/d_i','y/d_i',['u_{e\perp,y}(\omega_{ci}t=' num2str(time(it)) ')'],lmt)
+%F1(indexf)=getframe(gcf);
+set(gcf, 'Renderer', 'zbuffer');
+%set(gcf,'fontsize',18)
+print('-dpng',['Ufilm4/' num2str(indexf,'%8.8i')])
+saveas(gcf,['Ufilm4/' num2str(indexf,'%8.8i') '.fig'])
+close all
+
+disp('f1')
+h=figure(1);
+set(h,'Position' , [5 5 560 420]);
+coplot(xx,yy,uperpz,ay,'x/d_i','y/d_i',['u_{e\perp,z}(\omega_{ci}t=' num2str(time(it)) ')'],lmt)
+%F1(indexf)=getframe(gcf);
+set(gcf, 'Renderer', 'zbuffer');
+%set(gcf,'fontsize',18)
+print('-dpng',['Ufilm5/' num2str(indexf,'%8.8i')])
+saveas(gcf,['Ufilm5/' num2str(indexf,'%8.8i') '.fig'])
+close all
+
+indexf=indexf+1
+
+
+end
+
+return
