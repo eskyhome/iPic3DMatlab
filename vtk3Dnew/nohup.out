@@ -1,0 +1,10 @@
+Xlib:  extension "RANDR" missing on display "localhost:11.0".
+dropbox: Fatal IO error 11 (Resource temporarily unavailable) on X server localhost:11.0.
+Another instance of Dropbox (9334) is running!
+Another instance of Dropbox (9334) is running!
+dropbox: Fatal IO error 11 (Resource temporarily unavailable) on X server localhost:11.0.
+dropbox: Fatal IO error 11 (Resource temporarily unavailable) on X server localhost:11.0.
+dropbox: Fatal IO error 11 (Resource temporarily unavailable) on X server localhost:13.0.
+Another instance of Dropbox (7459) is running!
+dropbox: Fatal IO error 11 (Resource temporarily unavailable) on X server localhost:10.0.
+Another instance of Dropbox (12239) is running!
